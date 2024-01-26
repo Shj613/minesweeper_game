@@ -1,0 +1,4 @@
+﻿  main.c
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(49,29): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(118,37): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+  SaoLei.vcxproj -> W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\Debug\SaoLei.exe
