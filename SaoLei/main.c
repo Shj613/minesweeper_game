@@ -67,7 +67,7 @@ void game_interface(char* map, int* num_mine_p, int* size_x_p, int* size_y_p,int
 	printf("   ");
 	for (i = 0; i < *size_x_p; i++)
 	{
-		if (i >= 10)
+		if (i >= 9)
 		{
 			printf("%d ", i + 1);
 		}
@@ -78,7 +78,7 @@ void game_interface(char* map, int* num_mine_p, int* size_x_p, int* size_y_p,int
 	for (j = 0; j < *size_y_p; j++)
 	{
 		//打印纵轴坐标
-		if (j >= 10)
+		if (j >= 9)
 		{
 			printf("%d ", j+ 1);
 		}
@@ -104,6 +104,8 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 	int rand_arr_cord =0;
 	int size = ((*size_x_p) * (*size_y_p));
 	int x_cord, y_cord;
+	char map_ui[900];
+
 	//初始化游戏
 	for (i = 0; i <size ; i++)
 	{
