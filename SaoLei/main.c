@@ -58,7 +58,7 @@ float rand_num(int rand_fact)
 }
 	
 //”Œœ∑ΩÁ√Ê
-void game_interface(char* map, int* num_mine_p, int* size_x_p, int* size_y_p,int size)
+void game_interface(char* map_ui, char* map, int* num_mine_p, int* size_x_p, int* size_y_p,int size)
 {	
 	int i, j, num = 0;
 	printf("***************************\n");
@@ -86,7 +86,7 @@ void game_interface(char* map, int* num_mine_p, int* size_x_p, int* size_y_p,int
 			printf("%d  ", j + 1);
 		for (i = 0; i < *size_x_p; i++)
 		{
-			printf("%c  ", map[num]);
+			printf("%c  ", map_ui[num]);
 			num++;
 		}
 		printf("\n");
@@ -98,6 +98,7 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 {
 	system("cls");
 	char map[900];
+	//int mine_pose[900];
 	int i;
 	int rand_fact=0;
 	float rand_port;
@@ -110,6 +111,8 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 	for (i = 0; i <size ; i++)
 	{
 		map[i] = 'O';
+		map_ui[i] = 'O';
+
 	}
 	for (i = 0; i < *num_mine_p; )
 	{	
@@ -120,12 +123,12 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 		rand_arr_cord = rand_port*(size-1);
 		if (map[rand_arr_cord] == 'O')
 		{
-			printf("%d\n", rand_arr_cord);
+			//printf("%d\n", rand_arr_cord);
 			map[rand_arr_cord] = 'X';
 			i++;
 		}
 	}
-	game_interface(map,num_mine_p, size_x_p, size_y_p,size);
+	game_interface(map_ui,map,num_mine_p, size_x_p, size_y_p,size);
 	scanf_s("%d%d", &x_cord, &y_cord);
 }
 int main()
