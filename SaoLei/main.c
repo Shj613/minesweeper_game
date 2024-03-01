@@ -104,7 +104,7 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 	float rand_port;
 	int rand_arr_cord =0;
 	int size = ((*size_x_p) * (*size_y_p));
-	int x_cord, y_cord;
+	int x_cord, y_cord,xy_cord;
 	char map_ui[900];
 
 	//初始化游戏
@@ -128,8 +128,19 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 			i++;
 		}
 	}
+	//后端界面的完善。每个格子周围有几个雷
+	
+	// 
+	//显示ui界面
 	game_interface(map_ui,map,num_mine_p, size_x_p, size_y_p,size);
+	//输入坐标
 	scanf_s("%d%d", &x_cord, &y_cord);
+	xy_cord = (*size_x_p * y_cord) + x_cord - 1;
+	//比对输入的位置是否有雷
+	//有雷则游戏结束，并给出结果
+	//无雷则继续游戏，并显示相应的画面
+	
+
 }
 int main()
 {
