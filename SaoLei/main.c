@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
+void show_in_map_ui(char* map_ui, char* map, int* num_mine_p, int* size_x_p, int* size_y_p, int size, int i);
+
 //开始菜单
 void menu()
 {
@@ -93,19 +96,181 @@ void game_interface(char* map_ui, char* map, int* num_mine_p, int* size_x_p, int
 	}
 }
 
+//游戏结束
+void gameover(int flag)
+{
+	if (flag == 1)
+	{
+		printf("踩到雷了，游戏结束！！！\n");
+	}
+	if (flag == 2)
+	{
+		printf("恭喜你，成功了！！！\n");
+	}
+
+}
+
+void show_in_map_ui(char* map_ui, char* map, int* num_mine_p, int* size_x_p, int* size_y_p, int size,int i)
+{
+	//判断左上角
+	if ((i % (*size_x_p) >= 1) && (i >= *size_x_p))
+	{
+		if (map[i - *size_x_p - 1] != 'X')
+		{
+			map_ui[i - *size_x_p - 1]=map[i - *size_x_p - 1];
+			
+		}
+		if (map[i - *size_x_p - 1] == '0')
+		{
+			map_ui[i - *size_x_p - 1] = ' ';
+			map[i - *size_x_p - 1] = ' ';
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i - *size_x_p - 1));
+		}
+			
+	}
+	//判断上面
+	if ((i >= *size_x_p))
+	{
+		if (map[i - *size_x_p] != 'X')
+		{
+			map_ui[i - *size_x_p] = map[i - *size_x_p];
+		}
+		if (map[i - *size_x_p] == '0')
+		{
+			map[i - *size_x_p] = ' ';
+			map_ui[i - *size_x_p] = ' ';
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i - *size_x_p));
+		}
+
+	}
+	//判断右上角
+	if (((i % (*size_x_p)) < (*size_x_p - 1)) && (i >= *size_x_p))
+	{
+		if (map[i - *size_x_p + 1] != 'X')
+		{
+			map_ui[i - *size_x_p + 1] = map[i - *size_x_p + 1];
+
+		}
+		if (map[i - *size_x_p + 1] == '0')
+		{
+			map[i - *size_x_p + 1] = ' ';
+			map_ui[i - *size_x_p + 1] = ' ';
+
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i - *size_x_p + 1));
+		}
+
+	}
+	//判断左边
+	if ((i % (*size_x_p) >= 1))
+	{
+		if (map[i - 1] != 'X')
+		{
+			map_ui[i - 1] = map[i - 1];
+
+		}
+		if (map[i - 1] == '0')
+		{
+			map[i - 1] = ' ';
+			map_ui[i - 1] = ' ';
+
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i - 1));
+		}
+
+	}
+	//中间
+	if (map[i] != 'X')
+	{
+		map_ui[i] = map[i];
+
+	}
+	if (map[i] == '0')
+		map[i] = ' ';
+	//判断右边
+	if ((i % (*size_x_p)) < (*size_x_p - 1))
+	{
+		if (map[i + 1] != 'X')
+		{
+			map_ui[i + 1] = map[i + 1];
+
+		}
+		if (map[i + 1] == '0')
+		{
+			map[i + 1] = ' ';
+			map_ui[i + 1] = ' ';
+
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i + 1));
+		}
+
+	}
+	//左下角
+	if (((i % (*size_x_p) >= 1)) && (i < (size - *size_x_p)))
+	{
+		if (map[i + *size_x_p - 1] != 'X')
+		{
+			map_ui[i + *size_x_p - 1] = map[i + *size_x_p - 1];
+
+		}
+		if (map[i + *size_x_p - 1] == '0')
+		{
+			map[i + *size_x_p - 1] = ' ';
+			map_ui[i + *size_x_p - 1] = ' ';
+
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i + *size_x_p - 1));
+		}
+
+	}
+	//下面
+	if (i < (size - *size_x_p))
+	{
+		if (map[i + *size_x_p] != 'X')
+		{
+			map_ui[i + *size_x_p] = map[i + *size_x_p];
+
+		}
+		if (map[i + *size_x_p] == '0')
+		{
+			map[i + *size_x_p] = ' ';
+			map_ui[i + *size_x_p] = ' ';
+
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i + *size_x_p));
+		}
+
+	}
+	//右下角
+	if (((i % (*size_x_p)) < (*size_x_p - 1)) && (i < (size - *size_x_p)))
+	{
+		if (map[i + *size_x_p + 1] != 'X')
+		{
+			map_ui[i + *size_x_p + 1] = map[i + *size_x_p + 1];
+
+		}
+		if (map[i + *size_x_p + 1] == '0')
+		{
+			map[i + *size_x_p + 1] = ' ';
+			map_ui[i + *size_x_p + 1] = ' ';
+
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, (i + *size_x_p + 1));
+		}
+
+	}
+}
+
 //开始游戏
 void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 {
 	system("cls");
 	char map[900];
 	//int mine_pose[900];
-	int i;
+	int i,j;
 	int rand_fact=0;
 	float rand_port;
 	int rand_arr_cord =0;
 	int size = ((*size_x_p) * (*size_y_p));
 	int x_cord, y_cord,xy_cord;
 	char map_ui[900];
+	int win_lose = 0;
+	int blank_num;
+	char a;
 
 	//初始化游戏
 	for (i = 0; i <size ; i++)
@@ -129,17 +294,123 @@ void start_game(int* num_mine_p, int* size_x_p, int* size_y_p)
 		}
 	}
 	//后端界面的完善。每个格子周围有几个雷
-	
+	for (i = 0; i < size; i++)
+	{
+		j = 0;
+		if (map[i] == 'O')
+		{
+			//判断左上角
+			if ((i%(*size_x_p)>=1)&&(i>=*size_x_p))
+			{
+				if (map[i - *size_x_p - 1] == 'X')
+				{
+					j++;
+				}
+			}
+			//判断上面
+			if ((i >= *size_x_p))
+			{
+				if (map[i - *size_x_p ] == 'X')
+				{
+					j++;
+				}
+			}
+			//判断右上角
+			if (((i % (*size_x_p)) < (*size_x_p-1)) && (i >= *size_x_p))
+			{
+				if (map[i - *size_x_p + 1] == 'X')
+				{
+					j++;
+				}
+			}
+			//判断左边
+			if ((i % (*size_x_p) >= 1))
+			{
+				if (map[i  - 1] == 'X')
+				{
+					j++;
+				}
+			}
+			//判断右边
+			if ((i % (*size_x_p)) < (*size_x_p - 1))
+			{
+				if (map[i + 1] == 'X')
+				{
+					j++;
+				}
+			}
+			//左下角
+			if (((i % (*size_x_p) >= 1)) && (i <(size- * size_x_p )))
+			{
+				if (map[i + *size_x_p - 1] == 'X')
+				{
+					j++;
+				}
+			}
+			//下面
+			if (i < (size - *size_x_p))
+			{
+				if (map[i + *size_x_p ] == 'X')
+				{
+					j++;
+				}
+			}
+			//右下角
+			if (((i % (*size_x_p)) < (*size_x_p - 1)) && (i < (size - *size_x_p)))
+			{
+				if (map[i + *size_x_p + 1] == 'X')
+				{
+					j++;
+				}
+			}
+			map[i] =j+'0';
+
+		}
+	}
+
 	// 
 	//显示ui界面
 	game_interface(map_ui,map,num_mine_p, size_x_p, size_y_p,size);
+
 	//输入坐标
-	scanf_s("%d%d", &x_cord, &y_cord);
-	xy_cord = (*size_x_p * y_cord) + x_cord - 1;
-	//比对输入的位置是否有雷
-	//有雷则游戏结束，并给出结果
-	//无雷则继续游戏，并显示相应的画面
-	
+	while (1)
+	{
+		blank_num = 0;
+		scanf_s("%d%d", &x_cord, &y_cord);
+		xy_cord = (*size_x_p * (y_cord-1)) + x_cord - 1;
+		//比对输入的位置是否有雷
+		if (map[xy_cord] == 'X')
+		{
+			win_lose = 1;
+			gameover(win_lose);
+			break;
+		}
+		else
+		{
+			map_ui[xy_cord] = map[xy_cord];
+			//将某个点的周围全部显示出来
+			show_in_map_ui(map_ui, map, num_mine_p, size_x_p, size_y_p, size, xy_cord);
+		}
+		game_interface(map_ui, map, num_mine_p, size_x_p, size_y_p, size);
+		//有雷则游戏结束，并给出结果
+		//无雷则继续游戏，并显示相应的画面
+
+		//检查游戏是否结束
+		for (i = 0; i < size; i++)
+		{
+			if (map_ui[i] == 'O')
+				blank_num++;
+		}
+		if (blank_num == *num_mine_p)
+		{
+			win_lose = 2;
+			gameover(win_lose);
+			break;
+		}
+	}
+	printf("按任意键继续");
+	scanf_s("%c", &a);
+	scanf_s("%c", &a);
 
 }
 int main()

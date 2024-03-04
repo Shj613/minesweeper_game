@@ -1,4 +1,12 @@
 ﻿  main.c
-W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(49,29): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(123,37): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(52,29): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(288,37): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(412,10): warning C4473: “scanf_s”: 没有为格式字符串传递足够的参数
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(412,10): message : 占位符和其参数预计 2 可变参数，但提供的却是 1 参数
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(412,10): message : 缺失的可变参数 2 为格式字符串“%c”所需
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(412,10): message : 此参数用作缓冲区大小
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(413,10): warning C4473: “scanf_s”: 没有为格式字符串传递足够的参数
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(413,10): message : 占位符和其参数预计 2 可变参数，但提供的却是 1 参数
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(413,10): message : 缺失的可变参数 2 为格式字符串“%c”所需
+W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\SaoLei\main.c(413,10): message : 此参数用作缓冲区大小
   SaoLei.vcxproj -> W:\WorkStation\GitHub_shj_repository\C_learning\test02_game\Debug\SaoLei.exe
